@@ -1,0 +1,98 @@
+@import '../../../assets/styles/importable/functions';
+@import '../../../assets/styles/importable/variables';
+
+.backdrop {
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: rem(300);
+  height: rem(400);
+  background: $light-color;
+  box-shadow: 0 rem(2) rem(12) rgba(0, 0, 0, 0.12);
+  border-radius: rem(6);
+}
+
+header {
+  background: $dark-color;
+  padding: rem(24) rem(12);
+  text-align: center;
+  color: $light-color;
+  text-transform: uppercase;
+}
+
+main {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.subheader {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+
+  .users-icon {
+    height: rem(70);
+    width: rem(80);
+    color:$dark-color;
+    margin-top: rem(20);
+  }
+
+  p {
+    font-size: rem(14);
+    color: $dark-color;
+  }
+}
+
+.buttons {
+  width: 100%;
+  display: flex;
+  flex-flow: column wrap;
+  padding: rem(20);
+}
+
+.button {
+  position: relative;
+  width: 100%;
+  height: rem(46);
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+  outline: none;
+  border: none;
+  padding: rem(16) rem(12);
+  margin-bottom: rem(8);
+  cursor: pointer;
+
+  &-dark {
+    @extend .button;
+    background: #3f4042;
+    color: #fbfbfb;
+  }
+
+  &-light {
+    @extend .button;
+    background: #c9c9c9;
+    color: #3f4042;
+  }
+}
+
+.github-icon {
+  position: absolute;
+  left: rem(24);
+  display: inline-block;
+  width: rem(24);
+  height: rem(24);
+  margin-right: rem(14);
+}
+
