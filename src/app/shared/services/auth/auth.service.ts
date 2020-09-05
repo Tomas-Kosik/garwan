@@ -30,9 +30,6 @@ export class AuthService {
             return this.mapUser(credentials);
           }
 
-          this.signOut()
-            .then(() => this.router.navigate([RoutingPaths.login]));
-
           return of(null);
         })
       );
@@ -42,15 +39,16 @@ export class AuthService {
     return this.angularFireAuth.signInWithPopup(provider);
   }
 
-  public signOut(): Promise<void> {
-    return this.angularFireAuth.signOut();
+  public signOut(): void {
+    this.angularFireAuth.signOut()
+      .then(() => this.router.navigate([RoutingPaths.login]));
   }
 
   private mapUser(credentials: firebase.User): Observable<User> {
     return of({
       uid: credentials.uid,
       name: credentials.displayName,
-      profilePicture: credentials.photoURL,
+      picture: credentials.photoURL,
       email: credentials.email
     });
   }

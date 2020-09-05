@@ -1,8 +1,6 @@
 export interface User {
-  uid: string;
-  name: string;
-  email: string;
-  profilePicture: string;
+  name?: string;
+  picture?: string;
   repositories?: number;
   followers?: number;
   issues?: number;

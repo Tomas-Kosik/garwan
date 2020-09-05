@@ -1,1 +1,28 @@
-<h2>Developers list component here</h2>
+<header>
+
+  <a href="https://github.com"
+     target="_blank"
+     class="logo">
+    <fa-icon [icon]="icons.github"></fa-icon>
+  </a>
+
+  <div class="wrapper">
+
+    <div *ngIf="user; else anonym"
+         class="user">
+      <img [src]="user.picture"
+           [alt]="user.name">
+      <p>Hi {{user.name}}</p>
+      <a (click)="signOut()"
+         class="sign-out">SignOut</a>
+    </div>
+
+    <ng-template #anonym>
+      <a [routerLink]="['/login']">LogIn</a>
+    </ng-template>
+
+  </div>
+
+</header>
+
+<app-user-list></app-user-list>

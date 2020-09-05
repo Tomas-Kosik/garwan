@@ -1,3 +1,4 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
 @import 'importable/variables';
 @import 'importable/functions';
 
@@ -11,6 +12,10 @@ html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.page-title {
+  margin-left: rem(25);
 }
 
 .ng-fa-icon .svg-inline--fa {

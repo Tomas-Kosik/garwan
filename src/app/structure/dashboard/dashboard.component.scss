@@ -1,0 +1,47 @@
+@import '../../../assets/styles/importable/functions';
+@import '../../../assets/styles/importable/variables';
+
+header {
+  width: 100%;
+  background: $dark-color;
+  padding: rem(10) rem(25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    width: rem(36);
+    color: $light-color;
+  }
+
+  .wrapper * {
+    color: $light-color;
+  }
+
+  .user {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-end;
+
+    img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    p {
+      font-weight: 600;
+    }
+
+    .sign-out {
+      margin-left: 30px;
+    }
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}
