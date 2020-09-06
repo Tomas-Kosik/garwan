@@ -1,0 +1,14 @@
+<div class="title-container">
+
+  <button *ngIf="showBackButton"
+          (click)='back()'
+          class="back-button"
+          mat-button>
+    <fa-icon [icon]="icons.back"></fa-icon>
+  </button>
+
+  <h2 class="page-title">
+    {{title}}
+  </h2>
+
+</div>

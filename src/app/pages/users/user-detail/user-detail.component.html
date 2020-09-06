@@ -1,0 +1,49 @@
+<app-page-title [title]="'User Detail'"
+                [showBackButton]="true">
+</app-page-title>
+
+<div *ngIf="user"
+     class="container">
+
+  <mat-card>
+
+    <mat-card-header>
+      {{user?.login}}
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="user">
+        <img [src]="user.avatar_url"
+             alt="profile-picture">
+        <p class="bio">{{user?.bio}}</p>
+      </div>
+
+      <section class="statistics">
+        <div class="field">{{user?.public_repos}} {{user?.public_repos === 1 ? 'repository' : 'repositories'}}</div>
+        <div class="field">{{user?.followers}} {{user?.followers === 1 ? 'follower' : 'followers'}}</div>
+      </section>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>
+
+<div class="container">
+  <h3>Repositories</h3>
+  <app-detail-table [user]="user"
+                    [suffix]="'/repos?'"
+                    [resultsLength]="user.public_repos"
+                    [columns]="repositoryColumns">
+  </app-detail-table>
+</div>
+
+<div class="container">
+  <h3>Followers</h3>
+  <app-detail-table [user]="user"
+                    [suffix]="'/followers?'"
+                    [resultsLength]="user.followers"
+                    [columns]="followersColumns">
+  </app-detail-table>
+</div>

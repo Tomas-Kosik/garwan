@@ -1,38 +1,65 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { forkJoin, Observable, of } from 'rxjs';
+import { catchError, map, switchMap } from 'rxjs/operators';
+
 import { Endpoint } from '../enums/endpoint.enum';
+import { User } from '../models/user.model';
 import { EndpointManager } from '../utils/endpoint-manager';
 import { HttpManager } from '../utils/http.manager';
+import { AuthService } from './auth/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService extends HttpManager {
-  public url = EndpointManager.getEndpointPrefix(Endpoint.USERS);
+  public usersUrl = EndpointManager.getSearchEndpointPrefix(Endpoint.USERS);
+  public userUrl = EndpointManager.getBrowseEndpointPrefix(Endpoint.USERS);
+  public credentials = `&client_id=${this.authService.getClientId()}&client_secret=${this.authService.getClientSecret()}`;
+  public totalElements = 0;
 
   public constructor(
-    private readonly httpClient: HttpClient
+    private readonly httpClient: HttpClient,
+    private readonly authService: AuthService,
   ) {
     super();
   }
 
-  public getUsers(location: string = 'Bratislava'): Observable<any> {
+  public getUsers(page: number, perPage: number, sort: string, order: string, location: string): Observable<any> {
     return this.httpClient.get(
-      `${this.url}?q=location:${location}`,
-      { headers: this.getHeader() }
+      `${this.usersUrl}?q=${encodeURIComponent(`location:${location || 'bratislava'}`)}`,
+      {
+        headers: this.getHeader(),
+        params: new HttpParams()
+          .set('page', (page + 1).toString())
+          .set('per_page', perPage.toString())
+          .set('sort', sort)
+          .set('order', order)
+          .set('client_id', this.authService.getClientId())
+          .set('client_secret', this.authService.getClientSecret())
+      }
     ).pipe(
-      map((data: any) => data.items.map(
-        (user) => {
-          return {
-            name: user.login,
-            picture: user.avatar_url,
-            repositories: 10,
-            followers: 30
-          };
+      map((data: any) => {
+        this.totalElements = data.total_count;
+        return data;
+      }),
+      switchMap(
+        (data: any) => {
+          const usersDetail$ = data.items.map(user => {
+            return this.httpClient.get(`${user.url}?${this.credentials}`)
+              .pipe(catchError(error => of(error)));
+          });
+
+          return forkJoin(usersDetail$);
         }
-      )),
+      )
+    );
+  }
+
+  public getUser(username: string): Observable<User> {
+    return this.httpClient.get(
+      `${this.userUrl}/${username}?${this.credentials}`,
+      { headers: this.getHeader() }
     );
   }
 }

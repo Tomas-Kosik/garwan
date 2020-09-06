@@ -1,0 +1,54 @@
+@import '../../../assets/styles/importable/functions';
+@import '../../../assets/styles/importable/variables';
+
+header {
+  width: 100%;
+  background: $dark-color;
+  padding: rem(10) rem(25);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .logo {
+    width: rem(36);
+    margin: 0;
+    color: $light-color;
+  }
+
+  .wrapper * {
+    color: $light-color;
+  }
+
+  .user {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .profile {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: rem(38);
+      height: rem(38);
+      border-radius: 50%;
+      margin-right: rem(10);
+    }
+
+    p {
+      font-weight: 600;
+    }
+  }
+
+  .sign-out {
+    margin-left: rem(30);
+  }
+
+  a {
+    cursor: pointer;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,56 @@
+@import '../../../../assets/styles/importable/functions';
+@import '../../../../assets/styles/importable/variables';
+
+.container {
+  margin: rem(20);
+  padding: rem(20);
+  border: 1px solid $mild-color;
+  width: 50%;
+}
+
+.mat-card-header {
+  background:$dark-color;
+  padding: rem(12) rem(6);
+  text-transform: capitalize;
+  font-size: rem(22);
+  color: $light-color;
+}
+
+.user {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+  img {
+    width: rem(150);
+    height: rem(150);
+    object-fit: cover;
+    border: 1px solid $mild-color;
+  }
+
+  .bio {
+    margin-left: rem(20);
+  }
+}
+
+.statistics {
+  display: flex;
+  margin: rem(20) 0;
+
+  .field {
+      width: rem(100);
+      height: rem(24);
+      border-radius: rem(4);
+      margin-right: rem(10);
+      font-size: rem(12);
+      color: white;
+      line-height: rem(22);
+      text-align: center;
+
+      &:nth-child(1) { background: #3d5cce; }
+      &:nth-child(2) { background: #3dce7e; }
+  }
+}
+
+

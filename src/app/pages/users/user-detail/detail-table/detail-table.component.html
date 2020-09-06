@@ -1,28 +1,16 @@
-<app-page-title [title]="'GitHub Users'">
-</app-page-title>
-
 <div class="mat-elevation-z8">
 
-  <div *ngIf="dataSource.loading$ | async"
+  <div *ngIf="isLoadingResults"
        class="backdrop">
     <app-loader></app-loader>
   </div>
 
-  <!-- FILTER -->
-  <mat-form-field>
-    <mat-label>Location</mat-label>
-    <input matInput
-           placeholder="Default = Bratislava"
-           value="Bratislava"
-           #location>
-  </mat-form-field>
-
-  <!-- TABLE -->
   <table mat-table
+         [dataSource]="dataSource"
          matSort
-         matSortDirection="desc"
+         matSortActive="created"
          matSortDisableClear
-         [dataSource]="dataSource">
+         matSortDirection="desc">
 
     <!-- DYNAMIC COLUMNS -->
     <ng-container *ngFor="let column of columns"
@@ -59,23 +47,18 @@
       </td>
     </ng-container>
 
-    <!-- ROWS -->
     <tr mat-header-row
-        *matHeaderRowDef="displayedColumns">
-    </tr>
+        *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row
-        *matRowDef="let row; columns: displayedColumns;">
-    </tr>
-    <tr class="mat-row"
-        *matNoDataRow>
-      <td class="mat-cell"
-          colspan="4">No data matching the filter</td>
-    </tr>
-
+        *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
 
-  <!-- PAGINATION -->
-  <mat-paginator [length]="userService.totalElements"
-                 [pageSize]="initPageSize"
+  <div class="rate-limit-reached"
+       *ngIf="isRateLimitReached">
+    GitHub's API rate limit has been reached. It will be reset in one minute.
+  </div>
+
+  <mat-paginator [length]="resultsLength"
+                 [pageSize]="defaultPageSize"
                  [pageSizeOptions]="pageSizeOptions"></mat-paginator>
 </div>

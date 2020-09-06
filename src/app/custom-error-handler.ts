@@ -7,7 +7,7 @@ export class CustomErrorHandler implements ErrorHandler {
   public constructor() { }
 
   public handleError(error: Error | HttpErrorResponse): void {
-    console.error(`${this.getErrorType(error)}: ${error}`);
+    console.dir(`${this.getErrorType(error)}: ${error}`);
   }
 
   private getErrorType(error: Error | HttpErrorResponse): string {

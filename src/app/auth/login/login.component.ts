@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { fontAwesomeIcons } from '../../shared/constants/fa-icons';
 import { RoutingPaths } from '../../shared/enums/routing-path.enum';
 import { AuthService } from '../../shared/services/auth/auth.service';
 
@@ -11,10 +10,7 @@ import { AuthService } from '../../shared/services/auth/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  public icons = {
-    github: faGithub,
-    users: faUsers
-  };
+  public icons = fontAwesomeIcons;
   public loading = false;
 
   public constructor(

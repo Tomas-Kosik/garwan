@@ -1,0 +1,26 @@
+@import '../../../../assets/styles/importable/functions';
+@import '../../../../assets/styles/importable/variables';
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: rem(20);
+}
+
+.page-title {
+  font-weight: 600;
+}
+
+.list-count {
+  font-size: rem(16);
+}
+
+.mat-button.back-button {
+  min-width: unset;
+  width: rem(40);
+  height: rem(40);
+  margin-right: rem(10);
+  border-radius: 50%;
+  padding: 0;
+}

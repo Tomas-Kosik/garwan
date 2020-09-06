@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: RoutingPaths.dashboard,
-    loadChildren: (): Promise<any> => import('./structure/dashboard/dashboard.module').then((mod: any) => mod.DashboardModule)
+    loadChildren: (): Promise<any> => import('./structure/structure.module').then((mod: any) => mod.StructureModule)
   },
   {
     path: '**',
