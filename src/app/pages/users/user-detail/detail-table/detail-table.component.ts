@@ -53,8 +53,7 @@ export class DetailTableComponent implements OnInit, AfterViewInit {
   }
 
   public showDetail(row: string): void {
-    // this.router.navigate([`/dashboard/${row}`]);
-    /* navigate to follower detail */
+    this.router.navigate([`dashboard/follower/${row}`]);
   }
 
   private loadData(): void {

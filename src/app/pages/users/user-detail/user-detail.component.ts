@@ -11,7 +11,7 @@ import { UserService } from '../../../shared/services/user.service';
 })
 export class UserDetailComponent implements OnInit {
   public user;
-  public username: string;
+  public currentUser: boolean;
   public repositoryColumns: TableColumn[] = [
     { columnDef: 'name', headerDef: 'Name', columnType: TableColumnType.COLUMN },
     { columnDef: 'watchers', headerDef: 'Watchers', columnType: TableColumnType.COLUMN },
@@ -34,6 +34,7 @@ export class UserDetailComponent implements OnInit {
   }
 
   private getUsernameAndSetDetail(): void {
+    this.currentUser = this.activatedRoute.snapshot.data.currentUser;
     this.activatedRoute.params
       .subscribe((params) => {
         this.userService.getUser(params.username)

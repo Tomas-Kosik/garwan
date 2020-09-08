@@ -26,7 +26,7 @@ export class HeaderComponent implements OnInit {
   }
 
   public goToDetail(username: string): void {
-    this.router.navigate([`${username}`], { relativeTo: this.activatedRoute });
+    this.router.navigate([`my-profile/${username}`], { relativeTo: this.activatedRoute });
   }
 
   public signOut(): void {
