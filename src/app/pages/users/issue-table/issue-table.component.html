@@ -1,0 +1,72 @@
+<div class="mat-elevation-z8">
+
+  <div *ngIf="dataSource.loading$ | async"
+       class="backdrop">
+    <app-loader></app-loader>
+  </div>
+
+  <!-- TABLE -->
+  <table mat-table
+         matSort
+         matSortDirection="desc"
+         matSortDisableClear
+         [dataSource]="dataSource">
+
+    <!-- DYNAMIC COLUMNS -->
+    <ng-container *ngFor="let column of columns"
+                  [matColumnDef]="column.columnDef">
+      <th mat-header-cell
+          mat-sort-header
+          *matHeaderCellDef>{{column.headerDef}}</th>
+
+      <td mat-cell
+          *matCellDef="let row">
+
+        <!-- COLUMN TYPES -->
+        <ng-container *ngIf="column.columnType === 'COLUMN'">
+          {{row[column.columnDef]}}
+        </ng-container>
+
+        <ng-container *ngIf="column.columnType === 'ACTION'">
+          <a [href]="row.html_url"
+             target="_blank"
+             rel="github">
+            <fa-icon [icon]="icons.chevronRight"
+                     class="detail-icon">
+            </fa-icon>
+          </a>
+        </ng-container>
+
+        <ng-container *ngIf="column.columnType === 'IMAGE'">
+          <img [src]="row[column.columnDef]"
+               alt="profile-picture"
+               class="profile-picture">
+        </ng-container>
+
+        <ng-container *ngIf="column.columnType === 'DATE'">
+          {{row[column.columnDef] | date}}
+        </ng-container>
+
+      </td>
+    </ng-container>
+
+    <!-- ROWS -->
+    <tr mat-header-row
+        *matHeaderRowDef="displayedColumns">
+    </tr>
+    <tr mat-row
+        *matRowDef="let row; columns: displayedColumns;">
+    </tr>
+    <tr class="mat-row"
+        *matNoDataRow>
+      <td class="mat-cell"
+          colspan="4">No data found</td>
+    </tr>
+
+  </table>
+
+  <!-- PAGINATION -->
+  <mat-paginator [length]="issueService.totalElements"
+                 [pageSize]="initPageSize"
+                 [pageSizeOptions]="pageSizeOptions"></mat-paginator>
+</div>

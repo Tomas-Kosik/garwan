@@ -1,0 +1,27 @@
+<header>
+
+  <p class="logo">
+    <fa-icon [icon]="icons.github"></fa-icon>
+  </p>
+
+  <div class="wrapper">
+
+    <div *ngIf="user; else anonym"
+         class="user">
+      <div class="profile"
+           (click)="goToDetail(user.screenName)">
+        <img [src]="user.picture"
+             [alt]="user.name">
+        <p>Hi {{user.name}}</p>
+      </div>
+      <a (click)="signOut()"
+         class="sign-out">SignOut</a>
+    </div>
+
+    <ng-template #anonym>
+      <a [routerLink]="['/login']">LogIn</a>
+    </ng-template>
+
+  </div>
+
+</header>

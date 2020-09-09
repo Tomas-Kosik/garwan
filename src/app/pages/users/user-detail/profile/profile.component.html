@@ -1,0 +1,27 @@
+<div *ngIf="user"
+     class="container">
+
+  <mat-card>
+
+    <mat-card-header>
+      {{user?.login}}
+    </mat-card-header>
+
+    <mat-card-content>
+
+      <div class="user">
+        <img [src]="user.avatar_url"
+             alt="profile-picture">
+        <p class="bio">{{user?.bio}}</p>
+      </div>
+
+      <section class="statistics">
+        <div class="field">{{user?.public_repos}} {{user?.public_repos === 1 ? 'repository' : 'repositories'}}</div>
+        <div class="field">{{user?.followers}} {{user?.followers === 1 ? 'follower' : 'followers'}}</div>
+      </section>
+
+    </mat-card-content>
+
+  </mat-card>
+
+</div>

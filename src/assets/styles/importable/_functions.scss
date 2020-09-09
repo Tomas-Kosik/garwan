@@ -1,0 +1,9 @@
+// Function for transform px to em
+@function em($target, $context: 16) {
+  @return ($target / $context) * 1em;
+}
+
+// Function for transform px to rem
+@function rem($target, $base: 16) {
+  @return ($target / $base) * 1rem;
+}

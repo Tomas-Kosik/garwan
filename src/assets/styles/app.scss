@@ -1,0 +1,88 @@
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import 'importable/variables';
+@import 'importable/functions';
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: $main-font;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  margin: rem(20);
+  padding: rem(20);
+  border: 1px solid $mild-color;
+  width: 50%;
+
+  @media screen and (max-width: rem(1280)) {
+      width: calc(100% - 2.5rem);
+  }
+}
+
+.page-title {
+  margin-left: rem(25);
+}
+
+.ng-fa-icon .svg-inline--fa {
+  width: 100%;
+  height: 100%;
+}
+
+.mat-elevation-z8 {
+  position: relative;
+  width: 100%;
+  padding: rem(16);
+}
+
+table {
+  width: 100%;
+
+  .profile-picture {
+    height: rem(40);
+    border-radius: 50%;
+    vertical-align: middle;
+  }
+
+  .detail-icon {
+    display: inline-block;
+    width: rem(30);
+    height: rem(16);
+    cursor: pointer;
+  }
+}
+
+td, th {
+  width: 15%;
+}
+
+.rate-limit-reached {
+  margin-top: rem(20);
+}
+
+.backdrop {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgb(255 255 255 / 75%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}

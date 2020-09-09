@@ -1,0 +1,30 @@
+<div class="backdrop">
+  <div class="container">
+
+    <header>
+      Garwan assignment
+    </header>
+
+    <main>
+
+      <section class="subheader">
+        <fa-icon [icon]="icons.users"
+                 class="users-icon"></fa-icon>
+        <p>Sign up to garwan assignment app</p>
+      </section>
+
+      <section class="buttons">
+        <button class="button button-dark"
+                (click)="githubLogin()">
+          <fa-icon [icon]="icons.github"
+                   class="github-icon"></fa-icon> Login with GitHub
+        </button>
+        <button class="button button-light"
+                (click)="continueWithoutLogin()">
+          Continue without login
+        </button>
+      </section>
+
+    </main>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<app-page-title [title]="currentUser ? 'Your Profile' : 'Detail'"
+                [showBackButton]="true">
+</app-page-title>
+
+<app-profile></app-profile>
+
+<div class="container">
+  <h3>Repositories</h3>
+  <app-detail-table [user]="user"
+                    [suffix]="'/repos?'"
+                    [resultsLength]="user.public_repos"
+                    [columns]="repositoryColumns">
+  </app-detail-table>
+</div>
+
+<div class="container">
+  <h3>Followers</h3>
+  <app-detail-table [user]="user"
+                    [suffix]="'/followers?'"
+                    [resultsLength]="user.followers"
+                    [columns]="followersColumns">
+  </app-detail-table>
+</div>
+
+<div class="container"
+     *ngIf="currentUser">
+  <h3>Issues</h3>
+  <app-issue-table [username]="user.login"></app-issue-table>
+</div>
