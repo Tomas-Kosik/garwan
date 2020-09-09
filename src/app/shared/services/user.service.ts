@@ -15,7 +15,7 @@ import { AuthService } from './auth/auth.service';
 export class UserService extends HttpManager {
   public usersUrl = EndpointManager.getSearchEndpointPrefix(Endpoint.USERS);
   public userUrl = EndpointManager.getBrowseEndpointPrefix(Endpoint.USERS);
-  public credentials = `&client_id=${this.authService.getClientId()}&client_secret=${this.authService.getClientSecret()}`;
+  public credentials = `&client_id=${this.authService.clientId}&client_secret=${this.authService.clientSecret}`;
   public totalElements = 0;
 
   public constructor(
@@ -35,8 +35,8 @@ export class UserService extends HttpManager {
           .set('per_page', perPage.toString())
           .set('sort', sort)
           .set('order', order)
-          .set('client_id', this.authService.getClientId())
-          .set('client_secret', this.authService.getClientSecret())
+          .set('client_id', this.authService.clientId)
+          .set('client_secret', this.authService.clientSecret)
       }
     ).pipe(
       map((data: any) => {

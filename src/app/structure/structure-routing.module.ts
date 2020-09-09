@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+
 import { FollowerDetailComponent } from '../pages/followers/follower-detail/follower-detail.component';
 import { ProfileComponent } from '../pages/users/user-detail/profile/profile.component';
 import { UserDetailComponent } from '../pages/users/user-detail/user-detail.component';
 import { UserListComponent } from '../pages/users/user-list/user-list.component';
+import { AuthGuard } from '../shared/services/auth/auth.guard';
 import { DashboardComponent } from './dashboard/dashboard.component';
 
 const routes: Routes = [
@@ -24,7 +26,8 @@ const routes: Routes = [
         component: UserDetailComponent,
         data: {
           currentUser: true
-        }
+        },
+        canActivate: [AuthGuard]
       },
       {
         path: ':username',

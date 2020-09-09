@@ -24,6 +24,6 @@
 
 <div class="container"
      *ngIf="currentUser">
-  <h3>Issueas</h3>
-
+  <h3>Issues</h3>
+  <app-issue-table [username]="user.login"></app-issue-table>
 </div>

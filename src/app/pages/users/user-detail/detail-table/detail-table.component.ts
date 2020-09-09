@@ -113,8 +113,8 @@ export class DetailTableDatabase extends HttpManager {
           .set('per_page', pageSize.toString())
           .set('sort', sort)
           .set('direction', order)
-          .set('client_id', this.authService.getClientId())
-          .set('client_secret', this.authService.getClientSecret())
+          .set('client_id', this.authService.clientId)
+          .set('client_secret', this.authService.clientSecret)
       }
     );
   }

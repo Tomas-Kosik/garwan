@@ -20,9 +20,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   public ngOnInit(): void {
-    this.authService.user$.subscribe(
-      (user) => this.user = user
-    );
+    this.authService.user$.subscribe((user) => this.user = user);
   }
 
   public goToDetail(username: string): void {

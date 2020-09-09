@@ -13,8 +13,7 @@
         <p>Sign up to garwan assignment app</p>
       </section>
 
-      <section class="buttons"
-               *ngIf="!loading; else loader">
+      <section class="buttons">
         <button class="button button-dark"
                 (click)="githubLogin()">
           <fa-icon [icon]="icons.github"
@@ -25,10 +24,6 @@
           Continue without login
         </button>
       </section>
-
-      <ng-template #loader>
-        <app-loader></app-loader>
-      </ng-template>
 
     </main>
   </div>

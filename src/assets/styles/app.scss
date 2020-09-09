@@ -19,6 +19,10 @@ html, body {
   padding: rem(20);
   border: 1px solid $mild-color;
   width: 50%;
+
+  @media screen and (max-width: rem(1280)) {
+      width: calc(100% - 2.5rem);
+  }
 }
 
 .page-title {

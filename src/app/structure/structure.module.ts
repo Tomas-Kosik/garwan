@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FollowerDetailComponent } from '../pages/followers/follower-detail/follower-detail.component';
+import { IssueTableComponent } from '../pages/users/issue-table/issue-table.component';
 
 import { DetailTableComponent } from '../pages/users/user-detail/detail-table/detail-table.component';
 import { ProfileComponent } from '../pages/users/user-detail/profile/profile.component';
@@ -19,7 +20,8 @@ import { StructureRoutingModule } from './structure-routing.module';
     UserDetailComponent,
     DetailTableComponent,
     ProfileComponent,
-    FollowerDetailComponent
+    FollowerDetailComponent,
+    IssueTableComponent,
   ],
   imports: [
     CommonModule,

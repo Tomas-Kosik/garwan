@@ -11,7 +11,6 @@ import { AuthService } from '../../shared/services/auth/auth.service';
 })
 export class LoginComponent implements OnInit {
   public icons = fontAwesomeIcons;
-  public loading = false;
 
   public constructor(
     private readonly authService: AuthService,
@@ -22,14 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   public githubLogin() {
-    this.loading = true;
-    this.authService.logInWithGithub()
-      .then((result: any) => {
-        this.authService.token = result.credential.accessToken;
-        this.router.navigate([RoutingPaths.dashboard]);
-      })
-      .catch((error) => console.error('Authentication failed'))
-      .finally(() => this.loading = false);
+    this.authService.logInWithGithub();
   }
 
   public continueWithoutLogin() {
